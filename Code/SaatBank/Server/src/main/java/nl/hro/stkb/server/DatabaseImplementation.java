@@ -29,7 +29,7 @@ public class DatabaseImplementation implements Database {
             connection = DriverManager.getConnection(host, userName, userPassword);
             logger.info("Connection to the database established");
         } catch (Exception e) {
-            logger.error("connection to the database failed,", e);
+            logger.error("Connection to the database failed,", e);
 
         }
     }
@@ -49,7 +49,7 @@ public class DatabaseImplementation implements Database {
             logger.debug("Saldo van "+rekeningNr+" = "+saldo);
 
         } catch (SQLException e) {
-            logger.error("execution of query select saldo failed", e);
+            logger.error("Execution of query select saldo failed", e);
         }
         return saldo;
     }
@@ -72,7 +72,7 @@ public class DatabaseImplementation implements Database {
                 }
                 return true;
             }
-            logger.debug("Saldo is ontoreikend");
+            logger.debug("Saldo is ontoereikend");
             return false;
         }
         catch (SQLException e){
