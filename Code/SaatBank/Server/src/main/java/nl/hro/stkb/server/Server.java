@@ -24,12 +24,12 @@ public class Server {
 
         try {
             server.start();
-            logger.info("server is gestart op port "+port);
+            logger.info("Server is gestart op port "+port);
             while (true){
                 Thread.sleep(1000);
             }
         } catch (IOException e) {
-            logger.error("server is niet gestart");
+            logger.error("Server is niet gestart");
         } catch (InterruptedException e) {
             logger.error("Thread is interupted");
         }

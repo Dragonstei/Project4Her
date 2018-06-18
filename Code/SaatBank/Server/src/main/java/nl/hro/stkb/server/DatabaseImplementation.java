@@ -59,7 +59,7 @@ public class DatabaseImplementation implements Database {
         try {
             long saldo = getBalance(rekeningNr);
             if (saldo >= amount) {
-                logger.debug("iban: {}\t saldo: {} ", rekeningNr, saldo);
+                logger.debug("IBAN: {}\t Saldo: {} ", rekeningNr, saldo);
 
                 PreparedStatement ps = connection.prepareStatement("UPDATE rekening SET saldo = ? WHERE iban = ?");
                 ps.setLong(1, (saldo - amount));
@@ -68,7 +68,7 @@ public class DatabaseImplementation implements Database {
                 boolean rs = ps.execute();
 
                 if (logger.isDebugEnabled()) {
-                    logger.debug("nieuwe saldo: {}", getBalance(rekeningNr));
+                    logger.debug("Mieuw saldo: {}", getBalance(rekeningNr));
                 }
                 return true;
             }
@@ -76,7 +76,7 @@ public class DatabaseImplementation implements Database {
             return false;
         }
         catch (SQLException e){
-            logger.error("execution of query withdraw failed", e);
+            logger.error("Execution of query withdraw failed", e);
         }
         return false;
     }
@@ -84,14 +84,14 @@ public class DatabaseImplementation implements Database {
    // @Override
     public boolean verifyCard(String uid, String iban ){
         try{
-            PreparedStatement ps = connection.prepareStatement("select pasnr from pinpas where pasnr = ? and rekening_iban = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT pasnr FROM pinpas WHERE pasnr = ? AND rekening_iban = ?");
             ps.setString(1, uid);
             ps.setString(2, iban);
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()){
-                logger.info("pas "+uid+" met iban "+iban+" bestaat");
+                logger.info("pas "+uid+" met IBAN "+iban+" bestaat");
                 return true;
             }
             else {
@@ -100,7 +100,7 @@ public class DatabaseImplementation implements Database {
             }
         }
         catch (SQLException e){
-            logger.error("query verify pin is mislukt");
+            logger.error("Query to verify pin is mislukt");
         }
 
         return false;
@@ -109,7 +109,7 @@ public class DatabaseImplementation implements Database {
    // @Override
     public boolean verifyPin(String uid, String pin){
         try{
-            PreparedStatement ps = connection.prepareStatement("select blokkade from pinpas where pasnr = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT blokkade FROM pinpas WHERE pasnr = ?");
             ps.setString(1, uid);
             ResultSet rs = ps.executeQuery();
             rs.next();
@@ -119,7 +119,7 @@ public class DatabaseImplementation implements Database {
                 return false;
             }
             else {
-                PreparedStatement ps2 = connection.prepareStatement("select pincode from pinpas where pasnr = ? and pincode = ?");
+                PreparedStatement ps2 = connection.prepareStatement("SELECT pincode FROM pinpas WHERE pasnr = ? AND pincode = ?");
                 ps2.setString(1, uid);
                 ps2.setString(2, pin);
 
@@ -127,7 +127,7 @@ public class DatabaseImplementation implements Database {
 
                 if (rs2.next()){
 
-                    PreparedStatement ps3 = connection.prepareCall("update pinpas set attempts = 0 where pasnr = ?");
+                    PreparedStatement ps3 = connection.prepareCall("UPDATE pinpas SET attempts = 0 WHERE pasnr = ?");
                     ps3.setString(1,uid);
                     ps3.execute();
 
@@ -137,7 +137,7 @@ public class DatabaseImplementation implements Database {
                     int plus = getAttemps(uid);
                     plus+=1;
 
-                    PreparedStatement ps4 = connection.prepareCall("update pinpas set attempts = ? where pasnr = ?");
+                    PreparedStatement ps4 = connection.prepareCall("UPDATE pinpas SET attempts = ? WHERE pasnr = ?");
                     ps4.setInt(1, plus);
                     ps4.setString(2,uid);
                     ps4.execute();
@@ -146,7 +146,7 @@ public class DatabaseImplementation implements Database {
 
 
                     if (getAttemps(uid) >= 3){
-                        PreparedStatement ps5 = connection.prepareCall("update pinpas set blokkade = 1 where pasnr = ?");
+                        PreparedStatement ps5 = connection.prepareCall("UPDATE pinpas SET blokkade = 1 WHERE pasnr = ?");
                         ps5.setString(1,uid);
                         ps5.execute();
                         return false;
@@ -158,7 +158,7 @@ public class DatabaseImplementation implements Database {
 
         }
         catch (SQLException e){
-            logger.error("query kon niet worden  1");
+            logger.error("Query to update blokkade kon niet worden uitgevoerd - Error: 1");
         }
 
         return false;
@@ -169,7 +169,7 @@ public class DatabaseImplementation implements Database {
     public int getAttemps(String uid){
         int pogingen = 0;
         try{
-            PreparedStatement ps = connection.prepareStatement("select attempts from pinpas where pasnr = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT attempts FROM pinpas WHERE pasnr = ?");
             ps.setString(1, uid);
             ResultSet rs = ps.executeQuery();
             rs.next();
@@ -177,7 +177,7 @@ public class DatabaseImplementation implements Database {
             return pogingen;
         }
         catch (SQLException e){
-            logger.error("query get attempts kon niet worden uitgevoerd 2");
+            logger.error("Query to get attempts kon niet worden uitgevoerd - Error: 2");
         }
 
         return pogingen;
@@ -187,7 +187,7 @@ public class DatabaseImplementation implements Database {
     public int getblokkade(String uid){
         int blokkade = 0;
         try{
-            PreparedStatement ps = connection.prepareStatement("select blokkade from pinpas where pasnr = ?");
+            PreparedStatement ps = connection.prepareStatement("SELECT blokkade FROM pinpas WHERE pasnr = ?");
             ps.setString(1, uid);
             ResultSet rs = ps.executeQuery();
             rs.next();
@@ -195,7 +195,7 @@ public class DatabaseImplementation implements Database {
             return blokkade;
         }
         catch (SQLException e){
-            logger.error("query get attempts kon niet worden uitgevoerd 3");
+            logger.error("Query to get blokkade kon niet worden uitgevoerd - Error: 3");
         }
 
         return blokkade;
