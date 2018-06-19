@@ -17,7 +17,7 @@ public class Server {
     private int port = 8024;
 
     public Server(){
-        URI uri = URI.create("http://145.24.253.34"+ port);
+        URI uri = URI.create("http://145.24.222.155"+ port);
         ResourceConfig config = new ResourceConfig(BankEndpoint.class);
         config.register(JacksonJaxbJsonProvider.class);
         HttpServer server = GrizzlyHttpServerFactory.createHttpServer(uri, config, true);

@@ -1,7 +1,7 @@
-C:\Users\Raber\Documents\Project4Her\Code\SaatBank\API\src\main\java\nl\hro\stkb\api\WithdrawRequest.java
-C:\Users\Raber\Documents\Project4Her\Code\SaatBank\API\src\main\java\nl\hro\stkb\api\WithdrawResponse.java
-C:\Users\Raber\Documents\Project4Her\Code\SaatBank\API\src\main\java\nl\hro\stkb\api\VerifyCardRequest.java
-C:\Users\Raber\Documents\Project4Her\Code\SaatBank\API\src\main\java\nl\hro\stkb\api\BalansResponse.java
-C:\Users\Raber\Documents\Project4Her\Code\SaatBank\API\src\main\java\nl\hro\stkb\api\VerifyPinRequest.java
-C:\Users\Raber\Documents\Project4Her\Code\SaatBank\API\src\main\java\nl\hro\stkb\api\VerifyPinResponse.java
-C:\Users\Raber\Documents\Project4Her\Code\SaatBank\API\src\main\java\nl\hro\stkb\api\VerifyCardResponse.java
+/home/raber/Project4Her/Code/SaatBank/API/src/main/java/nl/hro/stkb/api/VerifyPinResponse.java
+/home/raber/Project4Her/Code/SaatBank/API/src/main/java/nl/hro/stkb/api/VerifyPinRequest.java
+/home/raber/Project4Her/Code/SaatBank/API/src/main/java/nl/hro/stkb/api/VerifyCardResponse.java
+/home/raber/Project4Her/Code/SaatBank/API/src/main/java/nl/hro/stkb/api/WithdrawRequest.java
+/home/raber/Project4Her/Code/SaatBank/API/src/main/java/nl/hro/stkb/api/VerifyCardRequest.java
+/home/raber/Project4Her/Code/SaatBank/API/src/main/java/nl/hro/stkb/api/WithdrawResponse.java
+/home/raber/Project4Her/Code/SaatBank/API/src/main/java/nl/hro/stkb/api/BalansResponse.java

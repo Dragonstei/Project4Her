@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api" />
         <module name="API" />
+        <module name="Client" />
         <module name="server" />
         <module name="Server" />
       </profile>
