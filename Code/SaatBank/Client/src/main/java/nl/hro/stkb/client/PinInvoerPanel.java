@@ -19,33 +19,33 @@ public class PinInvoerPanel extends JPanel {
         pinInvoer.setForeground(Color.white);
         pinInvoer.setFont(new Font("Tahoma", Font.BOLD, 51));
         pinInvoer.setText("Voer uw pincode in");
-        pinInvoer.setBounds(12, 189, 1890, 232);
+        pinInvoer.setBounds(12, 100, 1300, 232);
         this.add(pinInvoer);
 
         passwordField = new JPasswordField();
         passwordField.setFont(new Font("Tahoma", Font.PLAIN, 99));
-        passwordField.setBounds(835, 463, 194, 109);
+        passwordField.setBounds(550, 350, 235, 109);
         this.add(passwordField);
 
         okButton = new JButton("OK[A]");
-        okButton.setBounds(1300, 463, 326, 74);
+        okButton.setBounds(975, 350, 326, 74);
         okButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(okButton);
 
         breekaf = new JButton("Afbreken[B]");
-        breekaf.setBounds(1300, 557, 326, 74);
+        breekaf.setBounds(975, 446, 326, 74);
         breekaf.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(breekaf);
 
         correctie = new JButton("Correctie[*]");
-        correctie.setBounds(300, 463, 326,74);
+        correctie.setBounds(25, 350, 326,74);
         correctie.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(correctie);
 
         background = new JLabel();
         background.setBounds(0, 0, 1920, 1080);
         this.add(background);
-        ImageIcon imgThisImg = new ImageIcon("C:/Users/Raber/Documents/Project-4/background/background.jpg");
+        ImageIcon imgThisImg = new ImageIcon("Client/background.jpg");
 
         background.setIcon(imgThisImg);
 

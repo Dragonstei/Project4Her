@@ -23,7 +23,7 @@ public class MainMenuPanel extends JPanel {
         welkom.setForeground(Color.white);
         welkom.setFont(new Font("Tahoma", Font.BOLD, 60));
         welkom.setText("Welkom");
-        welkom.setBounds(12, 150, 1890, 100);
+        welkom.setBounds(12, 100, 1300, 100);
         this.add(welkom);
 
         maakKeuze = new JLabel();
@@ -31,44 +31,44 @@ public class MainMenuPanel extends JPanel {
         maakKeuze.setForeground(Color.white);
         maakKeuze.setFont(new Font("Tahoma", Font.BOLD, 51));
         maakKeuze.setText("Maak uw keuze");
-        maakKeuze.setBounds(12, 300, 1890, 100);
+        maakKeuze.setBounds(12, 200, 1300, 100);
         this.add(maakKeuze);
 
 
         saldoOpvragen = new JButton("Saldo[A]");
-        saldoOpvragen.setBounds(1300, 463, 326, 74);
+        saldoOpvragen.setBounds(975, 350, 326, 74);
         saldoOpvragen.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(saldoOpvragen);
 
         bedragInvoeren = new JButton("Eigen bedrag[B]");
-        bedragInvoeren.setBounds(1300, 557, 326, 74);
+        bedragInvoeren.setBounds(975, 446, 326, 74);
         bedragInvoeren.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(bedragInvoeren);
 
         breekaf = new JButton("Afbreken[C]");
-        breekaf.setBounds(1300, 651, 326, 74);
+        breekaf.setBounds(975, 540, 326, 74);
         breekaf.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(breekaf);
 
         snelpin10 = new JButton("10 euros[1]");
-        snelpin10.setBounds(300, 463, 326,74);
+        snelpin10.setBounds(25, 350, 326,74);
         snelpin10.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(snelpin10);
 
         snelpin20 = new JButton("20 euro[4]");
-        snelpin20.setBounds(300, 557, 326,74);
+        snelpin20.setBounds(25, 446, 326,74);
         snelpin20.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(snelpin20);
 
         snelpin50 = new JButton("50 euro[7]");
-        snelpin50.setBounds(300, 651, 326, 74);
+        snelpin50.setBounds(25, 540, 326, 74);
         snelpin50.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(snelpin50);
 
         background = new JLabel();
         background.setBounds(0, 0, 1920, 1080);
         this.add(background);
-        ImageIcon imgThisImg = new ImageIcon("C:/Users/Raber/Documents/Project-4/background/background.jpg");
+        ImageIcon imgThisImg = new ImageIcon("Client/background.jpg");
 
         background.setIcon(imgThisImg);
 

@@ -36,23 +36,23 @@ public class BiljettenKiezen extends JPanel {
         kiesbrieven = new JLabel();
         kiesbrieven.setHorizontalAlignment(SwingConstants.CENTER);
         kiesbrieven.setForeground(Color.white);
-        kiesbrieven.setFont(new Font("Tahoma", Font.BOLD, 60));
+        kiesbrieven.setFont(new Font("Tahoma", Font.BOLD, 51));
         kiesbrieven.setText("Kies welke biljetten u wilt");
-        kiesbrieven.setBounds(12, 150, 1890, 100);
+        kiesbrieven.setBounds(12, 100, 1300, 100);
         this.add(kiesbrieven);
 
         totaal = new JLabel();
-        totaal.setHorizontalAlignment(SwingConstants.CENTER);
+        totaal.setHorizontalAlignment(SwingConstants.LEFT);
         totaal.setForeground(Color.white);
-        totaal.setFont(new Font("Tahoma", Font.BOLD, 45));
-        totaal.setBounds(30, 300, 1000, 100);
+        totaal.setFont(new Font("Tahoma", Font.BOLD, 35));
+        totaal.setBounds(25, 200, 1000, 100);
         this.add(totaal);
 
         amount = new JLabel();
         amount.setHorizontalAlignment(SwingConstants.CENTER);
         amount.setForeground(Color.WHITE);
-        amount.setFont(new Font("Tahoma", Font.BOLD, 45));
-        amount.setBounds(1000, 300, 700, 100);
+        amount.setFont(new Font("Tahoma", Font.BOLD, 35));
+        amount.setBounds(650, 200, 700, 100);
         amount.setText("bedrag opnemen: "+am);
         this.add(amount);
 
@@ -69,45 +69,45 @@ public class BiljettenKiezen extends JPanel {
         timer.start();
 
         biljet10 = new JButton("10 euro biljet[1]");
-        biljet10.setBounds(300, 463, 326,74);
+        biljet10.setBounds(25, 350, 326,74);
         biljet10.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(biljet10);
 
         biljet20 = new JButton("20 euro biljet[4]");
-        biljet20.setBounds(300, 557, 326,74);
+        biljet20.setBounds(25, 446, 326,74);
         biljet20.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(biljet20);
 
         biljet50 = new JButton("50 euro biljet[7]");
-        biljet50.setBounds(300, 651, 326, 74);
+        biljet50.setBounds(25, 540, 326, 74);
         biljet50.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(biljet50);
 
 
         verwijderBedrag = new JButton("Verwijder Bedrag[A]");
-        verwijderBedrag.setBounds(1300, 463, 326, 74);
+        verwijderBedrag.setBounds(975, 350, 326, 74);
         verwijderBedrag.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(verwijderBedrag);
 
         breekaf = new JButton("Afbreken[C]");
-        breekaf.setBounds(1300, 651, 326, 74);
+        breekaf.setBounds(975, 446, 326, 74);
         breekaf.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(breekaf);
 
         mainMenu = new JButton("Terug naar menu[B]");
-        mainMenu.setBounds(1300, 557, 326, 74);
+        mainMenu.setBounds(975, 540, 326, 74);
         mainMenu.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(mainMenu);
 
         ok = new JButton("Bevestig[D]");
-        ok.setBounds(792, 557, 326, 74);
+        ok.setBounds(470, 540, 326, 74);
         ok.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(ok);
 
         background = new JLabel();
         background.setBounds(0, 0, 1920, 1080);
         this.add(background);
-        ImageIcon imgThisImg = new ImageIcon("C:/Users/Raber/Documents/Project-4/background/background.jpg");
+        ImageIcon imgThisImg = new ImageIcon("Client/background.jpg");
 
         background.setIcon(imgThisImg);
 

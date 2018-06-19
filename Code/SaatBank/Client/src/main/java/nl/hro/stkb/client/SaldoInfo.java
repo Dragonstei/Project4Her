@@ -27,7 +27,7 @@ public class SaldoInfo extends JPanel {
         uwsaldois.setForeground(Color.white);
         uwsaldois.setFont(new Font("Tahoma", Font.BOLD, 60));
         uwsaldois.setText("Uw saldo ");
-        uwsaldois.setBounds(12, 150, 1890, 100);
+        uwsaldois.setBounds(12, 100, 1300, 100);
         this.add(uwsaldois);
 
         saldo = new JLabel();
@@ -35,30 +35,30 @@ public class SaldoInfo extends JPanel {
         saldo.setForeground(Color.white);
         saldo.setFont(new Font("Tahoma", Font.BOLD, 51));
         saldo.setText(saldoGebruiker+" Euro");
-        saldo.setBounds(12, 300, 1890, 100);
+        saldo.setBounds(12, 200, 1300, 100);
         this.add(saldo);
 
 
 
         eigenBedrag = new JButton("Eigen bedrag [A]");
-        eigenBedrag.setBounds(1300, 463, 326, 74);
+        eigenBedrag.setBounds(975, 350, 326, 74);
         eigenBedrag.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(eigenBedrag);
 
         mainMenu = new JButton("Terug naar menu[B]");
-        mainMenu.setBounds(1300, 557, 326, 74);
+        mainMenu.setBounds(975, 446, 326, 74);
         mainMenu.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(mainMenu);
 
         breekaf = new JButton("Afbreken[C]");
-        breekaf.setBounds(1300, 651, 326, 74);
+        breekaf.setBounds(975, 540, 326, 74);
         breekaf.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(breekaf);
 
         background = new JLabel();
         background.setBounds(0, 0, 1920, 1080);
         this.add(background);
-        ImageIcon imgThisImg = new ImageIcon("C:/Users/Raber/Documents/Project-4/background/background.jpg");
+        ImageIcon imgThisImg = new ImageIcon("Client/background.jpg");
 
         background.setIcon(imgThisImg);
 

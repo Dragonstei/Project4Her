@@ -19,21 +19,21 @@ public class ScanPasPanel extends JPanel{
         beginscherm.setForeground(Color.white);
         beginscherm.setFont(new Font("Tahoma", Font.BOLD, 51));
         beginscherm.setText("Houd uw pinpas voor de scanner");
-        beginscherm.setBounds(12, 400, 1890, 100);
+        beginscherm.setBounds(12, 400, 1300, 100);
         this.add(beginscherm);
 
         welkom = new JLabel();
         welkom.setHorizontalAlignment(SwingConstants.CENTER);
         welkom.setForeground(Color.white);
         welkom.setFont(new Font("Tahoma", Font.BOLD, 60));
-        welkom.setText("Welkom bij The Grand Exchange");
-        welkom.setBounds(12, 150, 1890, 100);
+        welkom.setText("Welkom bij Saatbank");
+        welkom.setBounds(12, 150, 1300, 100);
         this.add(welkom);
 
         background = new JLabel();
-        background.setBounds(0, 0, 1920, 1080);
+        background.setBounds(0, 0, 1366, 768);
         this.add(background);
-        ImageIcon imgThisImg = new ImageIcon("C:/Users/Raber/Documents/Project-4/background/background.jpg");
+        ImageIcon imgThisImg = new ImageIcon("Client/background.jpg");
         background.setIcon(imgThisImg);
 
         setVisible(true);

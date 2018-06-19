@@ -17,7 +17,7 @@ public class IncorrectPincodeNotificatie {
         incrrectPIn.getContentPane().setLayout(null);
         JLabel lblNewLabel = new JLabel("Incorrecte pincode u heeft nog "+m+" pogingen over!!");
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-        lblNewLabel.setBounds(50, 58, 500, 28);
+        lblNewLabel.setBounds(25, 58, 500, 28);
         incrrectPIn.getContentPane().add(lblNewLabel);
 
         incrrectPIn.setVisible(true);

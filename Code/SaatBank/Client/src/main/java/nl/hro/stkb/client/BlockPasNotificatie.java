@@ -17,8 +17,9 @@ public class BlockPasNotificatie {
 
         blockpas.getContentPane().setLayout(null);
         JLabel lblNewLabel = new JLabel("Uw pas is geblokkeerd!!");
-        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-        lblNewLabel.setBounds(50, 58, 500, 28);
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 21));
+        lblNewLabel.setBounds(25, 58, 475, 28);
         blockpas.getContentPane().add(lblNewLabel);
 
         blockpas.setVisible(true);

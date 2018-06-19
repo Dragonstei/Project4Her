@@ -44,12 +44,14 @@ public class SerialPortListener implements SerialPortEventListener{
 
 
     public SerialPortListener() {
-
+        System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
         this.initialize();
 
         mainFrame = new MainFrame();
-        scanPasPanel = new ScanPasPanel();
-        mainFrame.add(scanPasPanel);
+       scanPasPanel = new ScanPasPanel();
+      mainFrame.add(scanPasPanel);
+
+
     }
 
     /**
@@ -58,9 +60,12 @@ public class SerialPortListener implements SerialPortEventListener{
 
     private static final String PORT_NAMES[] = {
 
-            "COM7", "COM6", "COM5", "COM4", "COM3", "COM2", "COM1"// Windows
+            "COM7", "COM6", "COM5", "COM4", "COM3", "COM2", "COM1", "/dev/ttyACM0", "/dev/ttyACM1", "/dev/ttyACM2","/dev/ttyACM3","/dev/ttyACM4", "/dev/ttyUSB0"// Windows
 
     };
+
+
+
 
     private BufferedReader input;
 
@@ -170,10 +175,9 @@ public class SerialPortListener implements SerialPortEventListener{
 
                     uid = inputline.substring(0, 8);
                     iban = BankClient.hexToAscii(inputline.substring(8, 30));
+                    System.out.println(uid);
+                    System.out.println(iban);
 
-                    if (iban.substring(0,4).equals("STKB")){
-                       BankClient.setTarget(BankClient.getClient().target("http://145.24.222.79:8024"));
-                    }
 
                     pas();
                 }
@@ -545,6 +549,15 @@ public void pas(){
         mainFrame.add(pinInvoerPanel);
         pinInvoerPanel.updateUI();
         scanPasPanel = null;
+
+        try {
+            OutputStream outputStream =  serialPort.getOutputStream();
+            outputStream.write("hello}".getBytes());
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
     else {

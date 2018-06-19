@@ -11,12 +11,12 @@ import java.util.EventListener;
 
 
 public class BankClient {
-    private  SerialPortListener serialPortListener;
+    private  static SerialPortListener serialPortListener;
 
 
 
     private static Client client = ClientBuilder.newClient().register(JacksonFeature.class);
-    private static WebTarget target = client.target("http://145.24.222.155:8024");
+    private static WebTarget target = client.target("http://145.24.222.155");
 
     public static void main(String[] args)
     {
@@ -24,7 +24,7 @@ public class BankClient {
             public void run() {
                 try {
 
-                    SerialPortListener serialPortListener = new SerialPortListener();
+                    serialPortListener = new SerialPortListener();
 
 
                 } catch (Exception e) {

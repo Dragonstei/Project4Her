@@ -39,6 +39,9 @@ byte colPins[numCols] = {A1, A2, A3, A4}; //Columns 0 to 3
 Keypad myKeypad = Keypad(makeKeymap(keymap), rowPins, colPins, numRows, numCols);
 //////////////////////////////////////////////////////////////////////////////////////////
 void setup() {
+
+   pinMode(8, OUTPUT);
+   digitalWrite(8, LOW);
   Serial.begin(9600);                                           // Initialize serial communications with the PC
   SPI.begin();                                                  // Init SPI bus
   mfrc522.PCD_Init();                                              // Init MFRC522 card
@@ -51,9 +54,20 @@ void loop() {
 keypad();
 rfid();
 
+char letter;
+String line;
+while (Serial.available() > 0) {
+   letter = Serial.read();
+   if (letter == '}'){
+    break;
+    }
 
+    line += letter;
+  }
 
-
+  if (line == "hello"){
+    digitalWrite(8, HIGH);
+    }
 }
 
 void printHex(byte *buffer, byte bufferSize) {
