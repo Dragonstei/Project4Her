@@ -20,7 +20,7 @@ public class BankEndpoint
     public BalansResponse getSaldo(@PathParam("rekeningNr") String rekeningNr){
         Database db = Server.getDatabase();
         BalansResponse response = new BalansResponse();
-        logger.trace("In de bankendpoint::getSaldo()");
+        logger.trace("in de bankendpoint::getSaldo()");
         response.setBalans(db.getBalance(rekeningNr));
         response.setIban(rekeningNr);
 
@@ -40,7 +40,7 @@ public class BankEndpoint
            response.setResponse(false);
            response.setNewSaldo(db.getBalance(request.getIban()));
            response.setTransactieNr(0);
-           logger.info("Pinnen is mislukt "+ response.isResponse());
+           logger.info("pinnen is mislukt "+ response.isResponse());
 
 
            return response;
@@ -48,7 +48,7 @@ public class BankEndpoint
        else {
            response.setResponse(true);
            response.setNewSaldo(db.getBalance(request.getIban()));
-           response.setBedragGepind(request.getAmount());
+           response.setBedragGepint(request.getAmount());
            response.setIban(request.getIban());
            response.setTransactieNr(nr);
            nr++;
@@ -91,7 +91,7 @@ public class BankEndpoint
        }
        else {
            response.setFailedAttemps(db.getAttemps(request.getUid()));
-           response.setGeblokkeerdpas(db.getblokkade(request.getUid()));
+           response.setGeblokeerdpas(db.getblokkade(request.getUid()));
            return response;
        }
 

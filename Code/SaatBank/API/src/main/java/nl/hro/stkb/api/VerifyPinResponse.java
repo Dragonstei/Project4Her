@@ -10,7 +10,7 @@ public class VerifyPinResponse {
     private int failedAttemps;
 
     @JsonProperty
-    private int geblokkeerdpas;
+    private int geblokeerdpas;
 
     public boolean isPin() {
         return pin;
@@ -28,12 +28,12 @@ public class VerifyPinResponse {
         this.failedAttemps = failedAttemps;
     }
 
-    public void setGeblokkeerdpas(int geblokkeerdpas) {
-        this.geblokkeerdpas = geblokkeerdpas;
+    public void setGeblokeerdpas(int geblokeerdpas) {
+        this.geblokeerdpas = geblokeerdpas;
     }
 
-    public int getGeblokkeerdpas() {
-        return geblokkeerdpas;
+    public int getGeblokeerdpas() {
+        return geblokeerdpas;
     }
 
 }

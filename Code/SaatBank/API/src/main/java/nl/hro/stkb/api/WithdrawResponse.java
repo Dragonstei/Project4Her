@@ -8,7 +8,7 @@ public class WithdrawResponse {
     @JsonProperty
     private long newSaldo;
     @JsonProperty
-    private long bedragGepind;
+    private long bedragGepint;
     @JsonProperty
     private String iban;
     @JsonProperty
@@ -38,12 +38,12 @@ public class WithdrawResponse {
         return transactieNr;
     }
 
-    public void setBedragGepind(long bedragGepind) {
-        this.bedragGepind = bedragGepind;
+    public void setBedragGepint(long bedragGepint) {
+        this.bedragGepint = bedragGepint;
     }
 
-    public long getBedragGepind() {
-        return bedragGepind;
+    public long getBedragGepint() {
+        return bedragGepint;
     }
 
     public void setIban(String iban) {

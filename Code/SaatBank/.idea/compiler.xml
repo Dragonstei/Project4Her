@@ -8,12 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="api" />
         <module name="API" />
-        <module name="Server" />
         <module name="server" />
+        <module name="Server" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="asdf" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>
