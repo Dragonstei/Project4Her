@@ -1,5 +1,4 @@
 package nl.hro.stkb.client;
-
 import nl.hro.stkb.api.*;
 import org.glassfish.jersey.jackson.*;
 
@@ -8,7 +7,7 @@ import javax.ws.rs.core.Form;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.awt.*;
-
+import java.util.EventListener;
 
 
 public class BankClient {
@@ -17,7 +16,7 @@ public class BankClient {
 
 
     private static Client client = ClientBuilder.newClient().register(JacksonFeature.class);
-    private static WebTarget target = client.target("http://145.24.222.79:8025");
+    private static WebTarget target = client.target("http://145.24.222.155:8024");
 
     public static void main(String[] args)
     {

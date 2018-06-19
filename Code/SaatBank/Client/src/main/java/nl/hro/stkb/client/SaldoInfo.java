@@ -1,4 +1,4 @@
-import nl.hro.grnd.TheGrandExchange.api.BalansResponse;
+package nl.hro.stkb.client;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,3 +1,4 @@
+package nl.hro.stkb.client;
 import javax.swing.*;
 import java.awt.*;
 

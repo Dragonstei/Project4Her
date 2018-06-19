@@ -1,19 +1,15 @@
+package nl.hro.stkb.client;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.Enumeration;
-import java.util.concurrent.TimeUnit;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import gnu.io.CommPortIdentifier;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
-import nl.hro.grnd.TheGrandExchange.api.BalansResponse;
-import nl.hro.grnd.TheGrandExchange.api.VerifyPinResponse;
-import nl.hro.grnd.TheGrandExchange.api.WithdrawResponse;
+import nl.hro.stkb.api.*;
 
-import static java.lang.Math.toIntExact;
 
 
 public class SerialPortListener implements SerialPortEventListener{
@@ -173,14 +169,12 @@ public class SerialPortListener implements SerialPortEventListener{
 
 
                     uid = inputline.substring(0, 8);
-                    iban = MyClient.hexToAscii(inputline.substring(8, 30));
+                    iban = BankClient.hexToAscii(inputline.substring(8, 30));
 
-                    if (iban.substring(0,4).equals("MESO")){
-                       MyClient.setTarget(MyClient.getClient().target("http://145.24.222.79:8025"));
+                    if (iban.substring(0,4).equals("STKB")){
+                       BankClient.setTarget(BankClient.getClient().target("http://145.24.222.79:8024"));
                     }
-                    if (iban.substring(0,4).equals("GRND")){
-                        MyClient.setTarget(MyClient.getClient().target("http://77.164.29.183"));
-                    }
+
                     pas();
                 }
                 catch (Exception e){
@@ -217,7 +211,7 @@ public class SerialPortListener implements SerialPortEventListener{
 
                         System.out.println(pinInvoerPanel.getPasswordField().
                                 getText().toLowerCase());
-                        VerifyPinResponse verifyPinResponse = MyClient.verifypin(uid.toString(), pinInvoerPanel.getPasswordField().getText());
+                        VerifyPinResponse verifyPinResponse = BankClient.verifypin(uid.toString(), pinInvoerPanel.getPasswordField().getText());
 
                         if (verifyPinResponse.getGeblokeerdpas() == 1) {
                             blockPas();
@@ -280,7 +274,7 @@ public class SerialPortListener implements SerialPortEventListener{
 
 
                 if (inputline.equals("A") ){
-                    saldoInfoPanel = new SaldoInfo(MyClient.getBalance(iban).getBalans());
+                    saldoInfoPanel = new SaldoInfo(BankClient.getBalance(iban).getBalans());
                     mainFrame.remove(mainMenuPanel);
                     mainFrame.add(saldoInfoPanel);
                     saldoInfoPanel.updateUI();
@@ -323,12 +317,11 @@ public class SerialPortListener implements SerialPortEventListener{
                     mainFrame.remove(saldoInfoPanel);
                     mainFrame.add(mainMenuPanel);
                     mainMenuPanel.updateUI();
-                    saldoInfoPanepas();l = null;
+                    saldoInfoPanel = null;
                     inputline = "pas();";
                 }pas();
-pas();
-                if (inputline.equpas();als("C")) {
-                    scanPasPanel pas();= new ScanPasPanel();
+                if (inputline.equals("C")) {
+                    scanPasPanel = new ScanPasPanel();
                     mainFrame.remove(saldoInfoPanel);
                     mainFrame.add(scanPasPanel);
                     scanPasPanel.updateUI();
@@ -351,7 +344,7 @@ pas();
 
 
                 if (inputline.equals("A")){
-                    saldoInfoPanel = new SaldoInfo(MyClient.getBalance(iban).getBalans());
+                    saldoInfoPanel = new SaldoInfo(BankClient.getBalance(iban).getBalans());
                     mainFrame.remove(eigenBedragInvoer);
                     mainFrame.add(saldoInfoPanel);
                     saldoInfoPanel.updateUI();
@@ -485,7 +478,7 @@ pas();
                         geenMatch();
                     }
                     else {
-                        WithdrawResponse response =MyClient.withdraw(iban, bedragGepint);
+                        WithdrawResponse response =BankClient.withdraw(iban, bedragGepint);
                         if (response.isResponse() == false){
                             geenSaldo();
                         }
@@ -546,7 +539,7 @@ pas();
 
 
 public void pas(){
-    if (MyClient.verifycard(uid, iban)) {
+    if (BankClient.verifycard(uid, iban)) {
         pinInvoerPanel = new PinInvoerPanel();
         mainFrame.remove(scanPasPanel);
         mainFrame.add(pinInvoerPanel);
