@@ -33,23 +33,25 @@ public class SerialPortListener implements SerialPortEventListener{
     public String uid;
     public String iban;
     private long bedragGepint;
-
-    public int biljet50 = 0;
+    public int tnummer = 3214;
+    public int biljet50 = 10;
     public int biljet20 = 50;
     public int biljet10 = 10;
+    public int biljet100 = 100;
 
     public int gekozen10 =0;
     public int gekozen20 = 0;
     public int gekozen50 = 0;
+    public int gekozen100 = 0;
 
 
     public SerialPortListener() {
-        System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
+        System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM3");
         this.initialize();
 
         mainFrame = new MainFrame();
        scanPasPanel = new ScanPasPanel();
-      mainFrame.add(scanPasPanel);
+        mainFrame.add(scanPasPanel);
 
 
     }
@@ -322,8 +324,8 @@ public class SerialPortListener implements SerialPortEventListener{
                     mainFrame.add(mainMenuPanel);
                     mainMenuPanel.updateUI();
                     saldoInfoPanel = null;
-                    inputline = "pas();";
-                }pas();
+                    inputline = "";
+                }
                 if (inputline.equals("C")) {
                     scanPasPanel = new ScanPasPanel();
                     mainFrame.remove(saldoInfoPanel);
@@ -331,6 +333,7 @@ public class SerialPortListener implements SerialPortEventListener{
                     scanPasPanel.updateUI();
                     saldoInfoPanel = null;
                     inputline = "";
+
                 }
             }
             if (eigenBedragInvoer != null){
@@ -428,6 +431,18 @@ public class SerialPortListener implements SerialPortEventListener{
                         gekozen50+=1;
                     }
                 }
+                if (inputline.equals("*")){
+
+                    if (biljet100 == 0) {
+                        afwezigBiljet();
+                    }
+                    else {
+                        biljettenKiezenPanel.addBill(100);
+                        biljettenKiezenPanel.updateUI();
+                        biljet100-=1;
+                        gekozen100+=1;
+                    }
+                }
                 if (inputline.equals("A")){
                     biljettenKiezenPanel.eraseBills();
                     biljettenKiezenPanel.updateUI();
@@ -441,6 +456,9 @@ public class SerialPortListener implements SerialPortEventListener{
                     biljet20+=gekozen20;
                     gekozen20=0;
 
+                    biljet100+=gekozen100;
+                    gekozen100=0;
+
                 }
                 if (inputline.equals("B")){
                     biljet50+=gekozen50;
@@ -451,6 +469,9 @@ public class SerialPortListener implements SerialPortEventListener{
 
                     biljet20+=gekozen20;
                     gekozen20=0;
+
+                    biljet100+=gekozen100;
+                    gekozen100=0;
 
                     mainMenuPanel = new MainMenuPanel();
                     mainFrame.remove(biljettenKiezenPanel);
@@ -470,6 +491,9 @@ public class SerialPortListener implements SerialPortEventListener{
                     biljet20+=gekozen20;
                     gekozen20=0;
 
+                    biljet100+=gekozen100;
+                    gekozen100=0;
+
                     scanPasPanel = new ScanPasPanel();
                     mainFrame.remove(biljettenKiezenPanel);
                     mainFrame.add(scanPasPanel);
@@ -483,19 +507,42 @@ public class SerialPortListener implements SerialPortEventListener{
                     }
                     else {
                         WithdrawResponse response =BankClient.withdraw(iban, bedragGepint);
+                        bedragGepint = response.getBedragGepint();
+                        iban = response.getIban();
+                        tnummer++;
                         if (response.isResponse() == false){
                             geenSaldo();
                         }
                         else {
-                            loadingPanel = new LoadingPanel();
+                            vraagOmBon = new VraagOmBon();
                             mainFrame.remove(biljettenKiezenPanel);
-                            mainFrame.add(loadingPanel);
-                            loadingPanel.updateUI();
+                            mainFrame.add(vraagOmBon);
+                            vraagOmBon.updateUI();
                             biljettenKiezenPanel = null;
 
                         }
                         inputline = "";
                     }
+                }
+
+            }
+            if (vraagOmBon != null){
+                if (inputline.equals("A")) {
+                    Printer printer = new Printer(iban, Long.toString(bedragGepint), tnummer);
+                    loadingPanel = new LoadingPanel();
+                    mainFrame.remove(vraagOmBon);
+                    mainFrame.add(loadingPanel);
+                    loadingPanel.updateUI();
+                    vraagOmBon = null;
+                }
+
+                if (inputline.equals("1")) {
+                    loadingPanel = new LoadingPanel();
+                    mainFrame.remove(vraagOmBon);
+                    mainFrame.add(loadingPanel);
+                    loadingPanel.updateUI();
+                    vraagOmBon = null;
+                }
                 }
 
             }
@@ -505,13 +552,13 @@ public class SerialPortListener implements SerialPortEventListener{
                 System.out.println("Aantal brieven 10: "+gekozen10);
                 System.out.println("Aantal brieven 20: "+gekozen20);
                 System.out.println("Aantal brieven 50: "+gekozen50);
-
+                System.out.println("Aantal brieven 100: "+gekozen100);
               //  dispencer.getBills(gekozen10, gekozen20, gekozen50);
 
                 gekozen20 = 0;
                 gekozen10 = 0;
                 gekozen50 = 0;
-
+                gekozen100 = 0;
                 long timestamp = System.currentTimeMillis();
 
                 while (timestamp + 5000 >= System.currentTimeMillis()){
@@ -539,7 +586,7 @@ public class SerialPortListener implements SerialPortEventListener{
 
 
         }
-    }
+
 
 
 public void pas(){
@@ -550,14 +597,6 @@ public void pas(){
         pinInvoerPanel.updateUI();
         scanPasPanel = null;
 
-        try {
-            OutputStream outputStream =  serialPort.getOutputStream();
-            outputStream.write("hello}".getBytes());
-
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
 
     }
     else {

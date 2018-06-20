@@ -17,6 +17,7 @@ public class BiljettenKiezen extends JPanel {
     private JButton biljet10;
     private JButton biljet20;
     private JButton biljet50;
+    private JButton biljet100;
     private JButton verwijderBedrag;
     private JButton breekaf;
     private JButton mainMenu;
@@ -27,6 +28,7 @@ public class BiljettenKiezen extends JPanel {
     private int ten;
     private int twenty;
     private int fifty;
+    private int onehundred;
 
 
 
@@ -83,6 +85,11 @@ public class BiljettenKiezen extends JPanel {
         biljet50.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(biljet50);
 
+        biljet50 = new JButton("100 euro biljet[*]");
+        biljet50.setBounds(25, 634, 326, 74);
+        biljet50.setFont(new Font("Tahoma", Font.PLAIN, 25));
+        this.add(biljet50);
+
 
         verwijderBedrag = new JButton("Verwijder Bedrag[A]");
         verwijderBedrag.setBounds(975, 350, 326, 74);
@@ -90,17 +97,17 @@ public class BiljettenKiezen extends JPanel {
         this.add(verwijderBedrag);
 
         breekaf = new JButton("Afbreken[C]");
-        breekaf.setBounds(975, 446, 326, 74);
+        breekaf.setBounds(975, 540, 326, 74);
         breekaf.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(breekaf);
 
         mainMenu = new JButton("Terug naar menu[B]");
-        mainMenu.setBounds(975, 540, 326, 74);
+        mainMenu.setBounds(975, 446, 326, 74);
         mainMenu.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(mainMenu);
 
         ok = new JButton("Bevestig[D]");
-        ok.setBounds(470, 540, 326, 74);
+        ok.setBounds(975, 634, 326, 74);
         ok.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(ok);
 
@@ -135,6 +142,7 @@ public class BiljettenKiezen extends JPanel {
             case 10: {ten++;break;}
             case 20: {twenty++;break;}
             case 50: {fifty++;break;}
+            case 100: {onehundred++;break;}
         }
     }
 

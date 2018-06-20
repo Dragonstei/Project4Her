@@ -26,7 +26,7 @@ public class VraagOmBon extends JPanel {
         jaKnop.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(jaKnop);
 
-        neeKnop = new JButton("Afbreken[1]");
+        neeKnop = new JButton("Nee[1]");
         neeKnop.setBounds(25, 350, 326, 74);
         neeKnop.setFont(new Font("Tahoma", Font.PLAIN, 25));
         this.add(neeKnop);

@@ -2,8 +2,8 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
-#define RST_PIN         9           // Configurable, see typical pin layout above
-#define SS_PIN          10          // Configurable, see typical pin layout above
+#define RST_PIN         5           // Configurable, see typical pin layout above
+#define SS_PIN          53          // Configurable, see typical pin layout above
 
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance
 MFRC522::MIFARE_Key key;
@@ -30,7 +30,7 @@ char keymap[numRows][numCols] = {
   {'*', '0', '#', 'D'}
 };
 
-byte rowPins[numRows] = {7, 6, 5, 4}; //Rows 0 to 3
+byte rowPins[numRows] = {11, 10, 9, 8}; //Rows 0 to 3
 
 byte colPins[numCols] = {A1, A2, A3, A4}; //Columns 0 to 3
 
@@ -39,9 +39,6 @@ byte colPins[numCols] = {A1, A2, A3, A4}; //Columns 0 to 3
 Keypad myKeypad = Keypad(makeKeymap(keymap), rowPins, colPins, numRows, numCols);
 //////////////////////////////////////////////////////////////////////////////////////////
 void setup() {
-
-   pinMode(8, OUTPUT);
-   digitalWrite(8, LOW);
   Serial.begin(9600);                                           // Initialize serial communications with the PC
   SPI.begin();                                                  // Init SPI bus
   mfrc522.PCD_Init();                                              // Init MFRC522 card
@@ -64,10 +61,14 @@ while (Serial.available() > 0) {
 
     line += letter;
   }
-
+  keypad();
+rfid();
   if (line == "hello"){
     digitalWrite(8, HIGH);
     }
+
+    keypad();
+rfid();
 }
 
 void printHex(byte *buffer, byte bufferSize) {
