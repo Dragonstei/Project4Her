@@ -35,9 +35,9 @@ public class SerialPortListener implements SerialPortEventListener{
     private long bedragGepint;
     public int tnummer = 3214;
     public int biljet50 = 10;
-    public int biljet20 = 50;
+    public int biljet20 = 10;
     public int biljet10 = 10;
-    public int biljet100 = 100;
+    public int biljet100 = 10;
 
     public int gekozen10 =0;
     public int gekozen20 = 0;
@@ -46,7 +46,7 @@ public class SerialPortListener implements SerialPortEventListener{
 
 
     public SerialPortListener() {
-        System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM3");
+        System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
         this.initialize();
 
         mainFrame = new MainFrame();
@@ -554,6 +554,14 @@ public class SerialPortListener implements SerialPortEventListener{
                 System.out.println("Aantal brieven 50: "+gekozen50);
                 System.out.println("Aantal brieven 100: "+gekozen100);
               //  dispencer.getBills(gekozen10, gekozen20, gekozen50);
+                try {
+                    OutputStream outputStream = serialPort.getOutputStream();
+                    outputStream.write(("{"+Integer.toString(gekozen10)+""+Integer.toString(gekozen20)+""+Integer.toString(gekozen50)+""+gekozen100+"}").getBytes());
+                    System.out.println("{"+(Integer.toString(gekozen10)+""+Integer.toString(gekozen20)+""+Integer.toString(gekozen50)+""+gekozen100+"}"));
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
 
                 gekozen20 = 0;
                 gekozen10 = 0;
@@ -561,7 +569,7 @@ public class SerialPortListener implements SerialPortEventListener{
                 gekozen100 = 0;
                 long timestamp = System.currentTimeMillis();
 
-                while (timestamp + 5000 >= System.currentTimeMillis()){
+                while (timestamp + 10000 >= System.currentTimeMillis()){
 
                 }
 
